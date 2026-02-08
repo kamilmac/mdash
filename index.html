@@ -7,11 +7,11 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#1a1b26;--bg2:#24283b;--bg3:#2f3349;
+  --bg:#111113;--bg2:#1a1a1e;--bg3:#252529;
   --fg:#c0caf5;--fg2:#a9b1d6;--fg3:#565f89;
   --accent:#7aa2f7;--accent2:#bb9af7;
-  --border:#3b4261;
-  --code-bg:#1e2030;
+  --border:#2a2a30;
+  --code-bg:#161618;
   --warn-bg:#3d2e00;--warn-fg:#e0af68;
   --sidebar-w:min(480px,85vw);
   --radius:6px;
@@ -32,20 +32,13 @@ body{
   transition:background .2s,color .2s;
 }
 
-/* Top bar */
-.topbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:8px 16px;background:var(--bg2);border-bottom:1px solid var(--border);
-  height:48px;
-}
-.topbar-left{display:flex;align-items:center;gap:12px}
-.topbar-right{display:flex;align-items:center;gap:8px}
-.topbar-title{font-weight:600;font-size:1rem;color:var(--fg)}
+/* Floating icon buttons */
+.icon-left{position:fixed;top:12px;left:12px;z-index:100}
+.icon-right{position:fixed;top:12px;right:12px;z-index:100;display:flex;gap:4px}
 
 button{
-  background:none;border:none;color:var(--fg2);cursor:pointer;
-  padding:6px 8px;border-radius:var(--radius);font-size:.875rem;
+  background:none;border:none;color:var(--fg3);cursor:pointer;
+  padding:6px;border-radius:var(--radius);font-size:.875rem;
   display:flex;align-items:center;gap:4px;
   transition:background .15s,color .15s;
 }
@@ -55,7 +48,7 @@ button svg{width:18px;height:18px}
 /* Truncation banner */
 .truncation-banner{
   display:none;
-  position:fixed;top:48px;left:0;right:0;z-index:90;
+  position:fixed;top:0;left:0;right:0;z-index:90;
   padding:8px 16px;
   background:var(--warn-bg);color:var(--warn-fg);
   font-size:.875rem;text-align:center;
@@ -66,7 +59,7 @@ button svg{width:18px;height:18px}
 /* Main content */
 .content{
   max-width:780px;margin:0 auto;
-  padding:72px 24px 48px;
+  padding:48px 24px 48px;
 }
 
 /* Rendered markdown */
@@ -168,29 +161,25 @@ button svg{width:18px;height:18px}
 /* Mobile */
 @media(max-width:640px){
   .sidebar{width:100vw}
-  .content{padding:64px 16px 32px}
+  .content{padding:48px 16px 32px}
 }
 </style>
 </head>
 <body>
 
-<!-- Top bar -->
-<div class="topbar">
-  <div class="topbar-left">
-    <button id="menuBtn" aria-label="Open editor">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-    </button>
-    <span class="topbar-title">mdash</span>
-  </div>
-  <div class="topbar-right">
-    <button id="copyBtn" aria-label="Copy link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-      <span>Copy link</span>
-    </button>
-    <button id="themeBtn" aria-label="Toggle theme">
-      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
+<!-- Floating icons -->
+<div class="icon-left">
+  <button id="menuBtn" aria-label="Open editor">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+  </button>
+</div>
+<div class="icon-right">
+  <button id="copyBtn" aria-label="Copy link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <button id="themeBtn" aria-label="Toggle theme">
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
 </div>
 
 <!-- Truncation banner -->
