@@ -1,5 +1,6 @@
 import { marked } from 'marked'
 import hljs from 'highlight.js'
+import DOMPurify from 'dompurify'
 
 marked.setOptions({
   breaks: true,
@@ -18,7 +19,7 @@ export function renderMarkdown(md: string): void {
   }
   emptyState.style.display = 'none'
   rendered.style.display = 'block'
-  rendered.innerHTML = marked.parse(md) as string
+  rendered.innerHTML = DOMPurify.sanitize(marked.parse(md) as string)
   rendered.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block as HTMLElement)
   })
