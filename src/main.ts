@@ -12,3 +12,5 @@ if (result.encrypted) {
 } else if (result.content) {
   setContent(result.content)
 }
+
+document.body.style.opacity = '1'
