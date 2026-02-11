@@ -18,10 +18,9 @@ for (const file of readdirSync(assetsDir).filter(f => f.endsWith('.css'))) {
 // Inline JS
 for (const file of readdirSync(assetsDir).filter(f => f.endsWith('.js'))) {
   const js = readFileSync(join(assetsDir, file), 'utf-8')
-    .replace(/<\/script>/gi, '<\\/script>')
   html = html.replace(
     new RegExp(`<script[^>]+src="[^"]*${file}"[^>]*></script>`),
-    `<script type="module">${js}</script>`
+    () => `<script type="module">${js}</script>`
   )
 }
 
