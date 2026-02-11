@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "bunx --bun vite build",
+    "build": "bunx --bun vite build && bun scripts/inline.ts",
     "preview": "bunx --bun vite preview"
   },
   "devDependencies": {
