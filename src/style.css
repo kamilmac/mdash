@@ -117,6 +117,12 @@ button svg{width:18px;height:18px}
   flex-shrink:0;width:1.2em;text-align:center;font-size:.9rem;
 }
 .empty-feature em{font-style:italic;color:var(--fg2)}
+.empty-credit{
+  margin-top:2.5rem;font-size:.75rem;color:var(--fg3);
+  text-decoration:none;border-bottom:1px solid var(--border);
+  padding-bottom:1px;transition:color .2s;
+}
+.empty-credit:hover{color:var(--fg2)}
 
 /* Sidebar overlay */
 .overlay{
